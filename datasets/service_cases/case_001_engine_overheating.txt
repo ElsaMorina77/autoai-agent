@@ -1,0 +1,5 @@
+Customer reports that the vehicle temperature gauge rises quickly after 10 minutes of driving.
+The engine warning light appears on the dashboard.
+OBD scan shows diagnostic trouble code P0217.
+Customer noticed a burning smell and a small coolant leak under the front of the vehicle.
+No major noise reported, but the driver says the car feels unsafe to continue driving.

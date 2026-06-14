@@ -1,0 +1,26 @@
+Cooling System Diagnostic Manual
+
+Relevant systems:
+- Radiator
+- Coolant reservoir
+- Water pump
+- Thermostat
+- Cooling fan
+- Coolant hoses
+
+Common symptoms:
+- Engine overheating
+- Rising temperature gauge
+- Coolant leak under vehicle
+- Burning smell
+- Engine warning light
+
+Diagnostic procedure:
+1. Inspect coolant reservoir level.
+2. Check for visible leaks around hoses, radiator, and water pump.
+3. Pressure-test the cooling system.
+4. Verify thermostat opens at operating temperature.
+5. Inspect radiator airflow and cooling fan operation.
+
+Risk note:
+Continued driving during overheating can cause cylinder head gasket damage, engine warping, or complete engine failure.

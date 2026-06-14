@@ -1,0 +1,3 @@
+Customer reports that the vehicle is hard to start in the morning.
+Dashboard lights flicker and battery warning light appears occasionally.
+Vehicle starts after jump start but struggles again after being parked for several hours.

@@ -1,0 +1,25 @@
+Brake System Diagnostic Manual
+
+Relevant systems:
+- Brake pads
+- Brake rotors
+- Brake calipers
+- Brake fluid
+- ABS sensors
+
+Common symptoms:
+- Brake noise
+- Soft brake pedal
+- ABS warning light
+- Vibration during braking
+- Reduced braking performance
+
+Diagnostic procedure:
+1. Inspect brake pad thickness.
+2. Inspect rotor surface and runout.
+3. Check brake fluid level and contamination.
+4. Scan ABS module for fault codes.
+5. Verify brake hydraulic pressure.
+
+Risk note:
+Brake faults are safety-critical and should be inspected before the vehicle continues normal operation.

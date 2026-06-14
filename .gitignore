@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+reports/
+mlflow.db
+mlruns/
+
+.env
+.DS_Store

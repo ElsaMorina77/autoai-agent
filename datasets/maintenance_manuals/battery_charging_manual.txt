@@ -1,0 +1,25 @@
+Battery and Charging System Manual
+
+Relevant systems:
+- Battery
+- Alternator
+- Starter motor
+- Ground wiring
+- Battery terminals
+
+Common symptoms:
+- Hard start
+- Flickering dashboard lights
+- Low voltage
+- Battery warning light
+- Vehicle starts after jump start
+
+Diagnostic procedure:
+1. Measure resting battery voltage.
+2. Perform battery load test.
+3. Test alternator charging voltage.
+4. Inspect battery terminals for corrosion.
+5. Check ground connections and parasitic draw.
+
+Risk note:
+A weak battery or failing alternator can cause unexpected no-start situations and electronic system instability.
