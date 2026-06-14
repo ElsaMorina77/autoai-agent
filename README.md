@@ -1,20 +1,29 @@
-# AutoAI Agent — Agentic AI Vehicle Diagnostics System
+# AutoAI Vehicle Diagnostics
 
-AutoAI Agent is an end-to-end automotive AI engineering project that uses a multi-agent pipeline to analyze vehicle service cases, diagnostic trouble codes, maintenance manuals, and sensor logs.
+AutoAI Vehicle Diagnostics is an automotive AI engineering project that analyzes vehicle service cases using a structured multi-agent pipeline.
 
-The project is designed to demonstrate production-oriented AI engineering skills for industrial and mobility-focused AI roles.
+The system combines customer complaint text, OBD diagnostic trouble codes, maintenance-manual evidence, sensor-log analysis, severity scoring, technician recommendations, JSON report generation, FastAPI endpoints, MLflow tracking, and a simple Streamlit interface.
+
+## Live Demo
+
+The deployed Streamlit app can be found here:
+
+```text
+https://autoai-agent.streamlit.app
+```
 
 ## Core Features
 
-- Multi-agent diagnostic workflow
+- Multi-agent vehicle diagnostic workflow
 - Automotive issue classification
-- Diagnostic trouble code extraction, such as P0217 and P0562
+- OBD diagnostic trouble-code extraction, such as P0217 and P0562
 - Maintenance-manual retrieval
 - Sensor-log threshold analysis
-- Severity and safety-risk scoring
-- Technician-style repair recommendations
+- Severity, safety-risk, urgency, and cost-risk scoring
+- Technician-style recommended actions
 - Structured JSON report generation
 - FastAPI backend with Swagger documentation
+- Streamlit frontend for simple diagnosis demos
 - MLflow tracking with SQLite backend
 - Automated tests with Pytest
 - GitHub Actions CI pipeline
@@ -22,30 +31,30 @@ The project is designed to demonstrate production-oriented AI engineering skills
 ## Architecture
 
 ```text
-Vehicle Case Input
-      |
-      v
+Vehicle Service Case
+        |
+        v
 Intake Agent
-      |
-      v
+        |
+        v
 Fault Code Agent
-      |
-      v
+        |
+        v
 Sensor Analysis Agent
-      |
-      v
+        |
+        v
 Retrieval Agent
-      |
-      v
+        |
+        v
 Diagnostic Agent
-      |
-      v
+        |
+        v
 Impact Agent
-      |
-      v
+        |
+        v
 Recommendation Agent
-      |
-      v
+        |
+        v
 Report Agent
 ```
 
@@ -53,6 +62,7 @@ Report Agent
 
 - Python
 - FastAPI
+- Streamlit
 - Pydantic
 - Pandas
 - Pytest
@@ -96,7 +106,9 @@ autoai-agent/
 │   ├── maintenance_manuals/
 │   └── sensor_logs/
 │
-├── reports/
+├── frontend/
+│   └── streamlit_app.py
+│
 ├── tests/
 ├── .github/
 │   └── workflows/
@@ -137,15 +149,15 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-## Example CLI Usage
+## CLI Usage
 
-Run without a sensor log:
+Run a diagnostic case without sensor data:
 
 ```bash
 python main.py --case datasets/service_cases/case_001_engine_overheating.txt --save-report
 ```
 
-Run with a sensor log:
+Run a diagnostic case with sensor data:
 
 ```bash
 python main.py --case datasets/service_cases/case_001_engine_overheating.txt --sensor-log datasets/sensor_logs/case_001_engine_overheating_sensors.csv --save-report
@@ -157,7 +169,24 @@ Run with MLflow tracking:
 python main.py --case datasets/service_cases/case_001_engine_overheating.txt --sensor-log datasets/sensor_logs/case_001_engine_overheating_sensors.csv --save-report --track-mlflow
 ```
 
-## Example API Usage
+## Streamlit Frontend
+
+Run the Streamlit app locally:
+
+```bash
+streamlit run frontend/streamlit_app.py
+```
+
+The frontend provides a simple interface for:
+
+- entering a vehicle service case
+- optionally using a sensor-log CSV
+- viewing issue type, severity, risk score, and OBD code count
+- reviewing symptoms, OBD codes, sensor findings, and manual evidence
+- viewing recommended technician actions
+- downloading the generated diagnostic report
+
+## FastAPI Backend
 
 Start the API:
 
@@ -198,18 +227,9 @@ Example response fields:
 ```json
 {
   "detected_issue_type": "engine_overheating",
-  "symptoms": [
-    "burning smell",
-    "coolant leak",
-    "warning light"
-  ],
-  "fault_codes": [
-    "P0217"
-  ],
+  "fault_codes": ["P0217"],
   "sensor_summary": "Sensor log shows 2 high-severity and 0 medium-severity threshold violations.",
-  "retrieved_documents": [
-    "cooling_system_manual.txt"
-  ],
+  "retrieved_documents": ["cooling_system_manual.txt"],
   "primary_diagnosis": "Coolant leak or low coolant level",
   "severity": "Critical",
   "safety_risk": "High",
@@ -321,6 +341,61 @@ The CI pipeline installs dependencies and runs:
 pytest
 ```
 
+## Deploying to Streamlit Community Cloud
+
+This project can be deployed as a Streamlit app after it is pushed to GitHub.
+
+Use this entrypoint:
+
+```text
+frontend/streamlit_app.py
+```
+
+Before deploying, make sure the repository includes:
+
+- `frontend/streamlit_app.py`
+- `app/`
+- `datasets/`
+- `requirements.txt`
+- `README.md`
+
+The Streamlit app imports the local backend code from the `app/` folder and uses the sample files in `datasets/`, so it can run as a self-contained demo without requiring a separate FastAPI server.
+
+Recommended deployment steps:
+
+1. Push the project to GitHub.
+2. Go to Streamlit Community Cloud.
+3. Create a new app from the GitHub repository.
+4. Set the main file path to:
+
+```text
+frontend/streamlit_app.py
+```
+
+5. Deploy the app.
+6. Add the deployed link to the `Live Demo` section of this README.
+
+## Notes on Generated Files
+
+The project can generate local reports and MLflow tracking files. These should not be committed to GitHub.
+
+Recommended `.gitignore` entries:
+
+```gitignore
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+reports/
+mlflow.db
+mlruns/
+
+.env
+.DS_Store
+```
+
+
 ## Project Goal
 
 The goal of this project is to demonstrate how agentic AI systems can support automotive diagnostics by combining:
@@ -334,26 +409,4 @@ The goal of this project is to demonstrate how agentic AI systems can support au
 - experiment tracking
 - API-based deployment structure
 
-## Why This Project Matters
 
-AutoAI Agent demonstrates skills relevant to production AI engineering and automotive AI roles:
-
-- Agentic workflow design
-- Structured AI system architecture
-- Retrieval-augmented diagnostic reasoning
-- Automotive telemetry analysis
-- Diagnostic trouble-code understanding
-- API development with FastAPI
-- Automated testing and CI
-- MLflow-based experiment tracking
-- Clean, modular Python engineering
-
-## Future Improvements
-
-- Add vector search for semantic maintenance-manual retrieval
-- Add PostgreSQL for persistent case storage
-- Add Streamlit dashboard
-- Add Docker support
-- Add cloud deployment
-- Add authentication for API usage
-- Add richer automotive datasets and benchmark cases
